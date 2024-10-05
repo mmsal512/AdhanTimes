@@ -1,4 +1,6 @@
 <?php
+include '../getAPI/getAPI.php';
+
 if (isset($_POST['city'])) {
     $defaultCity = $_POST['city'];
 } else {
@@ -28,9 +30,7 @@ $prayerTimes = [
     'Isha' => 'العشاء',
 ];
 // رابط API لجلب مواقيت الآذان بناءً على المدينة المختارة
-$url = "http://api.aladhan.com/v1/timingsByCity?country=ye&city=$defaultCity";
-$json = file_get_contents($url);
-$praies = json_decode($json, true);
+$praies = GetApi::fetchData("http://api.aladhan.com/v1/timingsByCity?country=ye&city=$defaultCity");
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +40,7 @@ $praies = json_decode($json, true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مواقيت الآذان</title>
+    <link rel="icon" type="image/png" href="img/adhan.png">
     <link href="css/bootstrap.css" rel="stylesheet">
     <style>
         body {
@@ -56,7 +57,7 @@ $praies = json_decode($json, true);
         }
 
         .card-header {
-            background-color: #6325eb;
+            background-color: #1578d0;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
