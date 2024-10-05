@@ -29,7 +29,7 @@ $prayerTimes = [
     'Maghrib' => 'المغرب',
     'Isha' => 'العشاء',
 ];
-// رابط API لجلب مواقيت الآذان بناءً على المدينة المختارة
+// استخدام الدالة الثابتة لجلب مواقيت الآذان
 $praies = GetApi::fetchData("http://api.aladhan.com/v1/timingsByCity?country=ye&city=$defaultCity");
 ?>
 
